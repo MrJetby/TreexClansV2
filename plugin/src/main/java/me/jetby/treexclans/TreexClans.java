@@ -15,6 +15,7 @@ import me.jetby.treexclans.api.addons.listener.EventRegistrar;
 import me.jetby.treexclans.api.gui.GuiFactory;
 import me.jetby.treexclans.api.service.ClanManager;
 import me.jetby.treexclans.api.service.leaderboard.LeaderboardService;
+import me.jetby.treexclans.clan.service.ClanManagerImpl;
 import me.jetby.treexclans.commands.CommandServiceImpl;
 import me.jetby.treexclans.commands.admin.AdminCommand;
 import me.jetby.treexclans.commands.clan.ClanCommand;

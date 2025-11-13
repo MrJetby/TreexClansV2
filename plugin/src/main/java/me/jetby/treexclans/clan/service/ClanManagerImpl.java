@@ -1,21 +1,22 @@
-package me.jetby.treexclans;
+package me.jetby.treexclans.clan.service;
 
 import me.jetby.treex.actions.ActionContext;
 import me.jetby.treex.actions.ActionExecutor;
 import me.jetby.treex.actions.ActionRegistry;
 import me.jetby.treex.text.Colorize;
 import me.jetby.treex.text.Papi;
+import me.jetby.treexclans.TreexClans;
 import me.jetby.treexclans.api.events.ClanCreateEvent;
 import me.jetby.treexclans.api.events.ClanDeleteEvent;
 import me.jetby.treexclans.api.service.ClanManager;
 import me.jetby.treexclans.api.service.clan.Clan;
 import me.jetby.treexclans.api.service.clan.member.Member;
 import me.jetby.treexclans.api.service.clan.level.Level;
-import me.jetby.treexclans.clan.ClanImpl;
+import me.jetby.treexclans.clan.model.ClanImpl;
+import me.jetby.treexclans.clan.model.ClanMemberImpl;
 import me.jetby.treexclans.configurations.Messages;
 import me.jetby.treexclans.api.gui.requirements.Requirements;
 import me.jetby.treexclans.api.gui.requirements.SimpleRequirement;
-import me.jetby.treexclans.clan.MemberImpl;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.OfflinePlayer;
@@ -87,7 +88,7 @@ public final class ClanManagerImpl implements Listener, ClanManager {
             Clan clan = lookup.getClanByMember(uuid);
             if (clan == null) return;
             Member member = clan.getMember(uuid);
-            if (member instanceof MemberImpl impl) {
+            if (member instanceof ClanMemberImpl impl) {
                 impl.setLastOnline(System.currentTimeMillis());
             }
         });
@@ -125,7 +126,7 @@ public final class ClanManagerImpl implements Listener, ClanManager {
         public boolean createClan(@NotNull String name, @NotNull Player leaderPlayer) {
             if (exists(name)) return false;
 
-            MemberImpl leader = new MemberImpl(
+            ClanMemberImpl leader = new ClanMemberImpl(
                     leaderPlayer.getUniqueId(),
                     plugin.getCfg().getLeaderRank(),
                     System.currentTimeMillis(),

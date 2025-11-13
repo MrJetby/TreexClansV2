@@ -3,7 +3,7 @@ package me.jetby.treexclans.gui.core;
 import com.jodexindustries.jguiwrapper.gui.advanced.GuiItemController;
 import me.jetby.treexclans.TreexClans;
 import me.jetby.treexclans.api.service.clan.Clan;
-import me.jetby.treexclans.clan.MemberImpl;
+import me.jetby.treexclans.clan.model.ClanMemberImpl;
 import me.jetby.treexclans.functions.glow.Equipment;
 import me.jetby.treexclans.api.gui.Button;
 import me.jetby.treexclans.api.gui.Gui;
@@ -16,9 +16,9 @@ import org.jetbrains.annotations.Nullable;
 
 public class ChooseColorGui extends Gui {
 
-    private final MemberImpl target;
+    private final ClanMemberImpl target;
 
-    public ChooseColorGui(JavaPlugin plugin, Menu menu, Player player, Clan clanImpl, @Nullable MemberImpl target) {
+    public ChooseColorGui(JavaPlugin plugin, Menu menu, Player player, Clan clanImpl, @Nullable ClanMemberImpl target) {
         super(plugin, menu, player, clanImpl);
         this.target = target;
         registerButtons();

@@ -3,8 +3,7 @@ package me.jetby.treexclans.tools.customactions;
 import me.jetby.treex.actions.Action;
 import me.jetby.treex.actions.ActionContext;
 import me.jetby.treexclans.TreexClans;
-import me.jetby.treexclans.clan.ClanImpl;
-import me.jetby.treexclans.clan.MemberImpl;
+import me.jetby.treexclans.clan.model.ClanImpl;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 

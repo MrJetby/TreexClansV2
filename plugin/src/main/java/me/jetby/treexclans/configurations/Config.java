@@ -5,7 +5,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import me.jetby.treex.text.Colorize;
-import me.jetby.treexclans.TreexClans;
 import me.jetby.treexclans.api.service.clan.Clan;
 import me.jetby.treexclans.api.service.clan.level.Level;
 import me.jetby.treexclans.api.service.clan.member.rank.Rank;

@@ -5,7 +5,7 @@ import me.jetby.treexclans.TreexClans;
 import me.jetby.treexclans.api.gui.*;
 import me.jetby.treexclans.api.service.clan.Clan;
 import me.jetby.treexclans.api.service.leaderboard.LeaderboardService;
-import me.jetby.treexclans.clan.MemberImpl;
+import me.jetby.treexclans.clan.model.ClanMemberImpl;
 import me.jetby.treexclans.api.service.clan.member.rank.Rank;
 import me.jetby.treexclans.gui.core.*;
 import org.bukkit.entity.Player;
@@ -85,7 +85,7 @@ public class GuiFactoryImpl implements GuiFactory {
                 case CHOOSE_COLOR -> {
                     if (args != null) {
                         for (Object obj : args) {
-                            if (obj instanceof MemberImpl target) {
+                            if (obj instanceof ClanMemberImpl target) {
                                 yield new ChooseColorGui(plugin, menu, player, clan, target);
                             }
                         }

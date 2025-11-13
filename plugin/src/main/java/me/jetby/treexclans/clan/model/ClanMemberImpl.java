@@ -1,4 +1,4 @@
-package me.jetby.treexclans.clan;
+package me.jetby.treexclans.clan.model;
 
 
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
-public class MemberImpl implements Member {
+public class ClanMemberImpl implements Member {
     private UUID uuid;
     private Rank rank;
     private long joinedAt;

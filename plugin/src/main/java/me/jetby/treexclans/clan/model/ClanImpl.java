@@ -1,4 +1,4 @@
-package me.jetby.treexclans.clan;
+package me.jetby.treexclans.clan.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

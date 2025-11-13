@@ -6,7 +6,7 @@ import me.jetby.treex.actions.ActionRegistry;
 import me.jetby.treexclans.TreexClans;
 import me.jetby.treexclans.api.service.clan.Clan;
 import me.jetby.treexclans.api.service.clan.member.Member;
-import me.jetby.treexclans.clan.MemberImpl;
+import me.jetby.treexclans.clan.model.ClanMemberImpl;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -77,7 +77,7 @@ public record QuestManager(TreexClans plugin) {
         }
     }
 
-    public void addProgressViaChecks(@NotNull Player player, @NotNull MemberImpl memberImpl,
+    public void addProgressViaChecks(@NotNull Player player, @NotNull ClanMemberImpl memberImpl,
                                      @NotNull Quest quest, @Nullable String property, int progress) {
         var clanImpl = plugin.getClanManager().lookup().getClanByMember(memberImpl);
         if (clanImpl == null) return;
@@ -197,7 +197,7 @@ public record QuestManager(TreexClans plugin) {
         }
     }
 
-    public void setProgress(@NotNull MemberImpl memberImpl, @NotNull Quest quest, int progress) {
+    public void setProgress(@NotNull ClanMemberImpl memberImpl, @NotNull Quest quest, int progress) {
         var clanImpl = plugin.getClanManager().lookup().getClanByMember(memberImpl);
         if (clanImpl == null) return;
 

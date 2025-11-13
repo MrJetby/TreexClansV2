@@ -3,7 +3,7 @@ package me.jetby.treexclans.commands.clan.subcommands;
 import me.jetby.treexclans.TreexClans;
 import me.jetby.treexclans.api.addons.commands.CommandService;
 import me.jetby.treexclans.api.command.Subcommand;
-import me.jetby.treexclans.clan.MemberImpl;
+import me.jetby.treexclans.clan.model.ClanMemberImpl;
 import me.jetby.treexclans.configurations.Messages;
 import me.jetby.treexclans.tools.Cooldown;
 import org.bukkit.command.Command;
@@ -42,7 +42,7 @@ public class AcceptSubcommand implements Subcommand {
             } else {
                 Cooldown.removeCooldown("invite_" + player.getUniqueId() + "_" + args[0]);
                 var clanImpl = plugin.getClanManager().lookup().getClan(args[0]);
-                MemberImpl memberImpl = new MemberImpl(
+                ClanMemberImpl memberImpl = new ClanMemberImpl(
                         player.getUniqueId(),
                         plugin.getCfg().getDefaultRank(),
                         System.currentTimeMillis(),

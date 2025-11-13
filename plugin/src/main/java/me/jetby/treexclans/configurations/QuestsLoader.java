@@ -14,9 +14,7 @@ import static me.jetby.treexclans.TreexClans.LOGGER;
 
 public class QuestsLoader {
 
-
     private final FileConfiguration configuration = FileLoader.getFileConfiguration("quests.yml");
-
 
     @Getter
     private final Map<String, Set<Quest>> categories = new LinkedHashMap<>();

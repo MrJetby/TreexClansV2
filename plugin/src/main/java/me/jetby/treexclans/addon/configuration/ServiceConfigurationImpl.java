@@ -26,13 +26,12 @@ public class ServiceConfigurationImpl implements ServiceConfiguration {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                javaPlugin.getLogger().severe("Failed to create config file: "+child);
+                javaPlugin.getLogger().severe("Failed to create config file: " + child);
                 e.printStackTrace();
             }
         }
         return YamlConfiguration.loadConfiguration(file);
     }
-
 
     public File getFile(String child) {
         File file = new File(dataFolder, child);
@@ -41,7 +40,7 @@ public class ServiceConfigurationImpl implements ServiceConfiguration {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                javaPlugin.getLogger().severe("Failed to create config file: "+child);
+                javaPlugin.getLogger().severe("Failed to create config file: " + child);
                 e.printStackTrace();
             }
         }

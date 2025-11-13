@@ -4,8 +4,8 @@ import me.jetby.treex.bukkit.LocationHandler;
 import me.jetby.treexclans.TreexClans;
 import me.jetby.treexclans.api.service.clan.Clan;
 import me.jetby.treexclans.api.service.clan.member.Member;
-import me.jetby.treexclans.clan.ClanImpl;
-import me.jetby.treexclans.clan.MemberImpl;
+import me.jetby.treexclans.clan.model.ClanImpl;
+import me.jetby.treexclans.clan.model.ClanMemberImpl;
 import me.jetby.treexclans.api.service.clan.member.rank.Rank;
 import me.jetby.treexclans.api.service.clan.member.rank.RankPerms;
 import me.jetby.treexclans.tools.FileLoader;
@@ -109,7 +109,7 @@ public class YAML implements Storage {
             }
             ConfigurationSection leaderSection = clan.getConfigurationSection("leader");
             if (leaderSection == null) continue;
-            MemberImpl leader = getMember(leaderUUID, leaderSection, ranks);
+            ClanMemberImpl leader = getMember(leaderUUID, leaderSection, ranks);
 
             ConfigurationSection members = clan.getConfigurationSection("members");
             if (members != null) {
@@ -240,7 +240,7 @@ public class YAML implements Storage {
         }
     }
 
-    private MemberImpl getMember(String key, ConfigurationSection member, Map<String, Rank> ranks) {
+    private ClanMemberImpl getMember(String key, ConfigurationSection member, Map<String, Rank> ranks) {
         if (member == null) return null;
         UUID uuid = UUID.fromString(key);
         Rank rank = ranks.get(member.getString("rank"));
@@ -261,7 +261,7 @@ public class YAML implements Storage {
             colors.put(id, color);
         }
 
-        return new MemberImpl(uuid, rank, joinedAt, lastOnline, glow, false, coin, exp, colors,
+        return new ClanMemberImpl(uuid, rank, joinedAt, lastOnline, glow, false, coin, exp, colors,
                 member.getInt("kills", 0),
                 member.getInt("deaths", 0)
         );

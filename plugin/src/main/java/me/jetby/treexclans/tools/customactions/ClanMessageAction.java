@@ -3,7 +3,7 @@ package me.jetby.treexclans.tools.customactions;
 import me.jetby.treex.actions.Action;
 import me.jetby.treex.actions.ActionContext;
 import me.jetby.treexclans.TreexClans;
-import me.jetby.treexclans.clan.ClanImpl;
+import me.jetby.treexclans.clan.model.ClanImpl;
 import org.jetbrains.annotations.NotNull;
 
 public class ClanMessageAction implements Action {

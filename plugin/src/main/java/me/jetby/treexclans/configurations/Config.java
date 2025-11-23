@@ -11,6 +11,7 @@ import me.jetby.treexclans.api.service.clan.member.rank.Rank;
 import me.jetby.treexclans.api.service.clan.member.rank.RankPerms;
 import me.jetby.treexclans.api.gui.requirements.SimpleRequirement;
 import me.jetby.treexclans.tools.FileLoader;
+import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -64,6 +65,31 @@ public class Config {
         this.file = FileLoader.getFile("config.yml");
     }
 
+    private String getStorageFilterType;
+    private List<String> getStorageFilterMaterials;
+
+    public EnumSet<Material> getAvailableStorageMaterials() {
+        if (getStorageFilterType.equalsIgnoreCase("blacklist")) {
+            EnumSet<Material> set = EnumSet.copyOf(Arrays.asList(Material.values()));
+            for (String str : getStorageFilterMaterials) {
+                try {
+                    Material material = Material.valueOf(str.toUpperCase());
+                    set.remove(material);
+                } catch (IllegalArgumentException ignored) {}
+            }
+            return set;
+        } else if (getStorageFilterType.equalsIgnoreCase("whitelist")) {
+            EnumSet<Material> set = EnumSet.noneOf(Material.class);
+            for (String str : getStorageFilterMaterials) {
+                try {
+                    Material material = Material.valueOf(str.toUpperCase());
+                    set.add(material);
+                } catch (IllegalArgumentException ignored) {}
+            }
+            return set;
+        }
+        return EnumSet.noneOf(Material.class);
+    }
     public void load() {
         requirements.clear();
         blockedTags = null;
@@ -71,6 +97,9 @@ public class Config {
         levels.clear();
 
         debug = configuration.getBoolean("debug", false);
+
+        getStorageFilterType = configuration.getString("clan-storage.filter.type", "BLACKLIST");
+        getStorageFilterMaterials = configuration.getStringList("clan-storage.filter.materials");
 
         ConfigurationSection prefix = configuration.getConfigurationSection("prefix");
         if (prefix == null) prefix = configuration.createSection("prefix");

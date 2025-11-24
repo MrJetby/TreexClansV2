@@ -47,9 +47,7 @@ public abstract class JavaAddon {
         this.info = getClass().getAnnotation(ClanAddon.class);
         this.serviceManager = context.serviceManager();
 
-        var pluginClan = serviceManager.getPlugin().getServer()
-                .getServicesManager()
-                .load(TreexClansAPI.class);
+        var pluginClan = TreexClansAPI.get();
 
         if (info == null) {
             throw new IllegalStateException("Class " + getClass().getName() + " does not have the @ClanAddon annotation");

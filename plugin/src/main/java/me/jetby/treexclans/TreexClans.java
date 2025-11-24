@@ -176,9 +176,9 @@ public final class TreexClans extends JavaPlugin implements TreexClansAPI {
         addonManager = new AddonManagerImpl(this, true);
 
         getServer().getServicesManager().register(
-                TreexClansAPI.class,            // интерфейс
-                this,    // реализация
-                this,                           // владелец (плагин)
+                TreexClansAPI.class,
+                this,
+                this,
                 ServicePriority.Normal
         );
 

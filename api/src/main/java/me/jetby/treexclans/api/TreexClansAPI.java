@@ -7,8 +7,10 @@ import me.jetby.treexclans.api.gui.GuiFactory;
 import me.jetby.treexclans.api.service.ClanManager;
 import me.jetby.treexclans.api.service.leaderboard.LeaderboardService;
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * 🧩 The main public API interface for interacting with TreexClans.
@@ -34,6 +36,10 @@ import org.jetbrains.annotations.NotNull;
  */
 
 public interface TreexClansAPI {
+
+    static @Nullable TreexClansAPI get() {
+        return Bukkit.getServicesManager().load(TreexClansAPI.class);
+    }
 
     /**
      * Provides access to the Vault economy integration.
